@@ -1,0 +1,35 @@
+﻿<Window x:Class="Variant1.Views.MainView"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Variant1.Views"
+        mc:Ignorable="d"
+        Title="Library System" Height="450" Width="800"
+        WindowStartupLocation="CenterScreen">
+    <Grid Margin="10">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <TextBlock Text="Книги в библиотеке" FontSize="18" FontWeight="Bold" Margin="0,0,0,10"/>
+
+        <DataGrid Grid.Row="1" ItemsSource="{Binding Books}" AutoGenerateColumns="False" SelectedItem="{Binding SelectedBook}" Margin="0,0,0,50">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Артикул" Binding="{Binding Article}" Width="*" />
+                <DataGridTextColumn Header="Название" Binding="{Binding Title}" Width="2*" />
+                <DataGridTextColumn Header="Жанр" Binding="{Binding Genre}" Width="*" />
+                <DataGridTextColumn Header="Статус" Binding="{Binding Status}" Width="*" />
+            </DataGrid.Columns>
+        </DataGrid>
+
+        <StackPanel Grid.Row="1" Orientation="Horizontal" HorizontalAlignment="Right" VerticalAlignment="Bottom" Margin="0,0,0,10">
+            <Button Content="Добавить" Margin="5" Width="100" Command="{Binding AddCommand}"/>
+            <Button Content="Редактировать" Margin="5" Width="100" Command="{Binding EditCommand}" />
+            <Button Content="Удалить" Margin="5" Width="100" Command="{Binding DeleteCommand}" />
+            <Button Content="Выдать" Margin="5" Width="100" Command="{Binding IssueCommand}" />
+            <Button Content="Вернуть" Margin="5" Width="100" Command="{Binding ReturnCommand}" />
+        </StackPanel>
+    </Grid>
+</Window>
